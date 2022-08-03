@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HNP.Views.AccountPage"
+             xmlns:local="clr-namespace:HNP.ViewModels"  
+             xmlns:model="clr-namespace:HNP.Models" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="BackgroundColor" Value="Black"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="WidthRequest" Value="270"/>
+            <Setter Property="PlaceholderColor" Value="#707070"/>
+            <Setter Property="MaxLength" Value="40"/>
+            <Setter Property="ClearButtonVisibility" Value="WhileEditing"/>
+            <Setter Property="IsSpellCheckEnabled" Value="False"/>
+            <Setter Property="IsTextPredictionEnabled" Value="False"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Black"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentView>
+        <ScrollView>
+            <StackLayout BackgroundColor="Black">
+                <StackLayout x:Name="AccountPanel" Margin="30, 40">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Image Source="Resources/drawable/icon.png" WidthRequest="80" Margin="20, 0"/>
+                        <Label Text="Профиль" FontSize="24" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Label Text="Личные данные" FontSize="20"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="ФИО:"/>
+                        <Entry Text="{Binding NSP}" x:Name="nsp" IsReadOnly="True"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Логин:"/>
+                        <Entry Text="{Binding Login}" x:Name="login" IsReadOnly="True"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,0,0,30">
+                        <Label Text="Почта:"/>
+                        <Entry Text="{Binding Email}" x:Name="email" IsReadOnly="True"/>
+                    </StackLayout>
+                    <Button x:Name="edit" Clicked="edit_Clicked" Text="Редактировать"/>
+                    <Button x:Name="save" Clicked="save_Clicked" Text="Сохранить" IsVisible="False"/>
+                    <Button x:Name="logout" Clicked="logout_Clicked" Text="Выйти"/>
+                    <Button x:Name="delete" Clicked="delete_Clicked" Text="Удалить аккаунт"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentView>
+</ContentPage>

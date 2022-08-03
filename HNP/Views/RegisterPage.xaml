@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HNP.RegisterPage"
+             xmlns:pages="clr-namespace:HNP" xmlns:vm="clr-namespace:HNP.ViewModels"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.BindingContext>
+        <vm:RegisterViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="WidthRequest" Value="50"/>
+            <Setter Property="PlaceholderColor" Value="#707070"/>
+            <Setter Property="MaxLength" Value="40"/>
+            <Setter Property="ClearButtonVisibility" Value="WhileEditing"/>
+            <Setter Property="IsSpellCheckEnabled" Value="False"/>
+            <Setter Property="IsTextPredictionEnabled" Value="False"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Black"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
+    <ScrollView>
+        <ContentView>
+            <StackLayout BackgroundColor="Black">
+                <StackLayout x:Name="LoginPanel" Margin="20, -30">
+                    <Image Source="Resources/drawable/splash_logo.png"/>
+                    <Entry x:Name="surname" Placeholder="Фамилия"/>
+                    <Entry x:Name="name" Placeholder="Имя"/>
+                    <Entry x:Name="login" Placeholder="Логин"/>
+                    <Entry x:Name="email" Placeholder="Почта"/>
+                    <Entry x:Name="pass" IsPassword="True" Placeholder="Пароль"/>
+                    <Entry x:Name="pass_retry" IsPassword="True" Placeholder="Повторите пароль"/>
+                    <Button x:Name="reg" Clicked="reg_Clicked" Text="Зарегистрироваться"></Button>
+                    <Button x:Name="log" Clicked="log_Clicked" Text="Уже еть аккаунт?"></Button>
+                </StackLayout>
+            </StackLayout>
+        </ContentView>
+    </ScrollView>
+</ContentPage>

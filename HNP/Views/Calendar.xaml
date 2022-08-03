@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HNP.Views.Calendar"
+             xmlns:vm="clr-namespace:HNP.ViewModels" 
+             xmlns:xc="clr-namespace:XCalendar;assembly=XCalendar"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <vm:CalendarViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#262626</Color>
+            <Color x:Key="purple">#a866d4</Color>
+            <Color x:Key="grey">#707070</Color>
+        </ResourceDictionary>
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Black"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout>
+            <StackLayout BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+                <ContentView>
+                    <xc:CalendarView x:Name="calendar" 
+                                 SelectionType="Single" 
+                                 DateSelectionChanged="calendar_DateSelectionChanged" 
+                                 BackgroundColor="{StaticResource Accent}" 
+                                 DayNameTextColor="{StaticResource purple}" 
+                                 NavigationTextColor="White" 
+                                 NavigationBackgroundColor="{StaticResource purple}" 
+                                 NavigationArrowColor="White" 
+                                 DayCurrentMonthTextColor="White" 
+                                 DayOtherMonthTextColor="{StaticResource grey}"
+                                 DayTodayBackgroundColor="{StaticResource purple}"
+                                 DayTodayBorderColor="{StaticResource Accent}"
+                                 DaySelectedBorderColor="{StaticResource purple}"
+                                 DaySelectedBackgroundColor="{StaticResource Accent}"
+                                 SelectionMode="Replace"/>
+                </ContentView>
+                <Label Text="Праздники:" TextColor="White" FontSize="17"/>
+                <Label x:Name="holiday" TextColor="White" FontSize="17"/>
+                <Button Text="Нажмите, чтобы добавить новый праздник" x:Name="newdate" Clicked="newdate_Clicked"/>
+                <Button Text="Показать мероприятия" x:Name="show" Clicked="show_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
